@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Art — Premium Drawing Tuition</title>
+    <meta name="google-site-verification" content="0luVI2Nd-dDPSPJSShZoXzv6ZagQkScFPMEgDMVCs6c" />
+    <meta name="description" content="Elite Art offers premium drawing tuition online. From pencil fundamentals to advanced portraiture. Join 12,000+ students today.">
+    <meta property="og:title" content="Elite Art — Premium Drawing Tuition">
+    <link rel="canonical" href="https://developer-srish.github.io/elite-art/">
+    
+    <script type="module">
+        import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
+        // Enforce production routing configurations globally
+        env.allowLocalModels = false;
+        env.useBrowserCache = true; 
+        window.pipeline = pipeline;
+    </script>
+        <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        input[type="radio"] { display: none; }
+        
+        body {
+            background-color: #FDF6E3;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .captcha-container {
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            opacity: 1;
+            transform: scale(1);
+            position: absolute;
+            z-index: 1000;
+        }
+
+        .captcha-container.hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+
+        .captcha-container h2 {
+            color: #1c3d5a;
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+                .stan {
+            position: relative;
+            width: 160px;
+            height: 280px;
+            margin: 0 auto 20px auto;
+        }
+
+        .head-body {
+            position: relative;
+            width: 140px;
+            height: 200px;
+            background-color: #e4b26f;
+            border-radius: 70px 70px 0 0;
+            margin: 0 auto;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .hair {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 20px;
+            background-color: #111;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .glasses {
+            position: absolute;
+            top: 65px;
+            left: 15px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .lens {
+            width: 50px;
+            height: 32px;
+            background-color: #ffffff;
+            border: 5px solid #111111;
+            border-radius: 4px 4px 12px 12px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .eye {
+            height: 8px; 
+            width: 16px;
+            background-color: #111111;
+            border-radius: 4px;
+        }
+
+        .eyebrow {
+            position: absolute;
+            top: 52px;
+            width: 42px;
+            height: 6px;
+            background-color: #111111;
+            transition: transform 0.3s ease;
+        }
+        .eyebrow.left { left: 22px; }
+        .eyebrow.right { right: 22px; }
+
+        .nose {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 18px;
+            background-color: #bfa07a;
+        }
+
+        .mouth {
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background-color: #111111;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .shirt {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 142px;
+            height: 70px;
+            background-color: #111111;
+            z-index: 3;
+        }
+
+        .collar {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 25px solid #e4b26f;
+        }
+
+        .pants {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 35px;
+            background-color: #1a4275;
+            border-radius: 0 0 10px 10px;
+            z-index: 1;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #stan-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1.5px solid #b3c1d1;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            outline: none;
+        }
+
+        #stan-input:disabled { background-color: #f1f5f9; cursor: not-allowed; }
+        #stan-input::placeholder { color: #7b8e9b; }
+
+        #submit-btn {
+            background-color: #3b71ca;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 24px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        #submit-btn:hover:not(:disabled) { background-color: #2850a7; }
+        #submit-btn:disabled { background-color: #94a3b8; cursor: not-allowed; }
+
+        .footer-text {
+            font-size: 12px;
+            color: #cbd5e1;
+            text-align: left;
+            max-width: 400px;
+            margin: 4px auto 0 auto;
+            padding-left: 5px;
+        }
+
+        .stan.happy .mouth {
+            height: 15px;
+            width: 30px;
+            background-color: transparent;
+            border-bottom: 4px solid #111111;
+            border-radius: 0 0 15px 15px;
+            bottom: 38px;
+        }
+        .stan.happy .eyebrow.left { transform: rotate(8deg) translateY(-2px); }
+        .stan.happy .eyebrow.right { transform: rotate(-8deg) translateY(-2px); }
+
+        .stan.sad .mouth {
+            height: 15px;
+            width: 30px;
+            background-color: transparent;
+            border-top: 4px solid #111111;
+            border-radius: 15px 15px 0 0;
+            bottom: 32px;
+        }
+
+        .stan.sad .tear {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #3b71ca;
+            border-radius: 0 50% 50% 50%;
+            transform: rotate(45deg);
+            top: 95px;
+            left: 40px;
+            opacity: 0;
+            animation: tears-falling 0.25s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .stan.sad .eyebrow.left { animation: tears-eyebrow-left 0.25s 0.3s forwards; }
+        .stan.sad .eyebrow.right { transform: rotate(8deg) translateY(2px); }
+
+        @keyframes tears-falling {
+            0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(35px) rotate(45deg); opacity: 0; }
+        }
+        @keyframes tears-eyebrow-left {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(2px) rotate(-8deg); }
+        }
+                #main-site-wrapper {
+            display: none;
+            opacity: 0;
+            width: 100%;
+            align-self: flex-start;
+            padding-bottom: 80px;
+            transition: opacity 0.8s ease;
+        }
+
+        #main-site-wrapper.reveal { display: block; opacity: 1; }
+        .page { display: none; padding: 40px 24px; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+        #tab-home:checked   ~ #home    { display: block; }
+        #tab-about:checked  ~ #about   { display: block; }
+        #tab-contact:checked ~ #contact { display: block; }
+        #tab-home:checked ~ #home, body:not(:has(input:checked)) #home { display: block; }
+
+        .page h2 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; }
+        .page p  { color: #666; line-height: 1.6; }
+
+        .bottom-nav {
+          position: fixed;
+          bottom: 0; left: 0; right: 0;
+          height: 70px;
+          background: #1a1a1a;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          z-index: 100;
+        }
+
+        .bottom-nav label {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2px;
+          color: #777;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          padding: 8px 6px;
+          border-radius: 12px;
+          cursor: pointer;
+          transition: color 0.2s, background 0.2s, transform 0.15s;
+        }
+
+        .bottom-nav label svg {
+          width: 24px; height: 24px;
+          stroke: currentColor;
+          fill: none;
+          stroke-width: 2;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+
+        .bottom-nav label:hover {
+          color: #ff6b1a;
+          background: rgba(255,107,26,0.12);
+          transform: translateY(-3px);
+        }
+
+        #tab-home:checked    ~ .bottom-nav label[for="tab-home"],
+        #tab-about:checked   ~ .bottom-nav label[for="tab-about"],
+        #tab-contact:checked ~ .bottom-nav label[for="tab-contact"],
+        body:not(:has(input:checked)) label[for="tab-home"] {
+          color: #ff6b1a;
+          background: rgba(255,107,26,0.12);
+        }
+
+        .hero, .heroi {
+            background-color: #1B365D;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            border-left: 10px solid #A0AEC0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .h path {
+            fill: transparent;
+            stroke:white;
+            stroke-width: 2px;
+            stroke-dasharray: 470;
+            stroke-dashoffset: 470;
+            animation: TextAnimation 3s ease-in-out 1 forwards; 
+        }
+        .whatsapp, .call {
+      position: fixed;
+      bottom: 90px;
+      
+      padding: 12px;
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .whatsapp {
+      right: 15px;
+      background: #25D366;
+    }
+
+    .call {
+    right: 85px;
+    background: #007BFF;
+    }
+
+        @keyframes TextAnimation { 0% { stroke-dashoffset: 470; } 80%{ fill: transparent; } 100% { stroke-dashoffset: 0; fill: white; } }
+        .stat { background-color:#2C5282; color: white; text-align: center; padding: 30px 20px; border-radius: 20px; border-left: 10px solid #A0AEC0; margin-top: 10px; }
+        .op { background-color: #E1E8F0; text-align: left; padding: 30px 20px; border-radius: 20px; border-left: 10px solid #A0AEC0; margin-top: 10px; }
+        ul { list-style: none; }
+    </style>
+</head>
+<body>
+    <div class="captcha-container" id="captcha-box">
+        <div class="stan" id="stan-character">
+            <div class="head-body">
+                <div class="hair"></div>
+                <div class="glasses">
+                    <div class="lens left-lens"><div class="eye left-eye"></div></div>
+                    <div class="lens right-lens"><div class="eye right-eye"></div></div>
+                </div>
+                <div class="eyebrow left"></div>
+                <div class="eyebrow right"></div>
+                <div class="nose"></div>
+                <div class="mouth"></div>
+                <div class="tear"></div> 
+            </div>
+            <div class="shirt"><div class="collar"></div></div>
+            <div class="pants"></div>
+        </div>
+        <h2 id="status-text">Loading Stan's AI brain...</h2>
+        <div class="input-group">
+            <input type="text" placeholder="Loading dependencies..." id="stan-input" disabled>
+            <button id="submit-btn" disabled>Tell Stan</button>
+        </div>
+        <div class="footer-text">reReCAPTCHA</div>
+    </div>
+
+    <div id="main-site-wrapper">
+        <input type="radio" name="tab" id="tab-home" checked>
+        <input type="radio" name="tab" id="tab-about">
+        <input type="radio" name="tab" id="tab-contact">
+
+        <div id="home" class="page">
+            <div class="heroi">
+                <svg class="h" xmlns="http://www.w3.org/2000/svg" viewBox="0 9.470000267028809 167.97000122070312 36.37999725341797" width="167.97" height="36.38">
+                    <g fill="#ffffff"><path d="M0 45.26L0 9.47L25.88 9.47L25.88 13.70L4.74 13.70L4.74 24.66L24.54 24.66L24.54 28.86L4.74 28.86L4.74 41.04L26.71 41.04L26.71 45.26L0 45.26ZM32.59 45.26L32.59 9.47L36.99 9.47L36.99 45.26L32.59 45.26ZM43.82 14.53L43.82 9.47L48.22 9.47L48.22 14.53L43.82 14.53M43.82 45.26L43.82 19.34L48.22 19.34L48.22 45.26L43.82 45.26ZM64.50 41.33L65.14 45.21Q63.28 45.61 61.82 45.61Q59.42 45.61 58.11 44.85Q56.79 44.09 56.25 42.86Q55.71 41.63 55.71 37.67L55.71 22.75L52.49 22.75L52.49 19.34L55.71 19.34L55.71 12.92L60.08 10.28L60.08 19.34L64.50 19.34L64.50 22.75L60.08 22.75L60.08 37.92Q60.08 39.79 60.31 40.33Q60.55 40.87 61.07 41.19Q61.60 41.50 62.57 41.50Q63.31 41.50 64.50 41.33ZM86.55 36.91L91.09 37.48Q90.01 41.46 87.11 43.65Q84.20 45.85 79.69 45.85Q74.00 45.85 70.67 42.35Q67.33 38.84 67.33 32.52Q67.33 25.98 70.70 22.36Q74.07 18.75 79.44 18.75Q84.64 18.75 87.94 22.29Q91.24 25.83 91.24 32.25Q91.24 32.64 91.21 33.42L71.88 33.42Q72.12 37.70 74.29 39.97Q76.46 42.24 79.71 42.24Q82.13 42.24 83.84 40.97Q85.55 39.70 86.55 36.91M72.12 29.81L86.60 29.81Q86.30 26.54 84.94 24.90Q82.84 22.36 79.49 22.36Q76.46 22.36 74.40 24.39Q72.34 26.42 72.12 29.81ZM104.37 45.26L118.12 9.47L123.22 9.47L137.87 45.26L132.47 45.26L128.30 34.42L113.33 34.42L109.40 45.26L104.37 45.26M114.70 30.57L126.83 30.57L123.10 20.65Q121.39 16.14 120.56 13.23Q119.87 16.67 118.63 20.07L114.70 30.57ZM141.04 45.26L141.04 19.34L145.00 19.34L145.00 23.27Q146.51 20.51 147.79 19.63Q149.07 18.75 150.61 18.75Q152.83 18.75 155.13 20.17L153.61 24.24Q152.00 23.29 150.39 23.29Q148.95 23.29 147.80 24.16Q146.66 25.02 146.17 26.56Q145.43 28.91 145.43 31.69L145.43 45.26L141.04 45.26ZM167.33 41.33L167.97 45.21Q166.11 45.61 164.65 45.61Q162.26 45.61 160.94 44.85Q159.62 44.09 159.08 42.86Q158.54 41.63 158.54 37.67L158.54 22.75L155.32 22.75L155.32 19.34L158.54 19.34L158.54 12.92L162.92 10.28L162.92 19.34L167.33 19.34L167.33 22.75L162.92 22.75L162.92 37.92Q162.92 39.79 163.15 40.33Q163.38 40.87 163.90 41.19Q164.43 41.50 165.41 41.50Q166.14 41.50 167.33 41.33Z"/></g>
+                </svg>
+            </div>
+            <div class="hero">
+                <h1>Master the Art of Drawing</h1>
+                <p style="color: white;">From pencil fundamentals to advanced portraiture - unlock your creative potential with elite instruction.</p>
+            </div>
+            <div class="stat"><h1>12K+ Students</h1></div>
+            <div class="stat"><h1>48 Courses</h1></div>
+            <div class="stat"><h1>96% Satisfaction</h1></div>
+            <br><br><br><hr><br>
+            <h1 style="color: #0F172A;">Start Your Journey Today</h1>
+            <div class="op">
+                <p>Beginner</p>
+                <h1>Pencil Fundamentals & Shading</h1>
+                <p>Master line weight, value scales, and hatching techniques that form the foundation of every great drawing.</p>
+            </div>
+            <div class="op">
+                <p>Intermediate</p>
+                <h1>Portrait Drawing Mastery</h1>
+                <p>Proportion, planes of the face, and expressive likeness — draw any face with confidence and accuracy.</p>
+            </div>
+            <div class="op">
+                <p>Advanced</p>
+                <h1>Composition & Perspective</h1>
+                <p>Two-point perspective, dynamic composition rules, and spatial storytelling for advanced illustrators</p>
+            </div>
+            <div style="text-align: left;" class="hero">
+                <p>Student Stories</p><hr><br><br>
+                <h1><i>ArtElite completely transformed the way I see and draw. Within three months I was producing portraits I couldn't have imagined before.</i></h1>
+            </div>
+        </div>
+
+        <div id="about" class="page">
+            <div class="heroi">
+                <svg class="h" xmlns="http://www.w3.org/2000/svg" viewBox="0 9.470000267028809 167.97000122070312 36.37999725341797" width="167.97" height="36.38">
+                    <g fill="#ffffff"><path d="M0 45.26L0 9.47L25.88 9.47L25.88 13.70L4.74 13.70L4.74 24.66L24.54 24.66L24.54 28.86L4.74 28.86L4.74 41.04L26.71 41.04L26.71 45.26L0 45.26ZM32.59 45.26L32.59 9.47L36.99 9.47L36.99 45.26L32.59 45.26ZM43.82 14.53L43.82 9.47L48.22 9.47L48.22 14.53L43.82 14.53M43.82 45.26L43.82 19.34L48.22 19.34L48.22 45.26L43.82 45.26ZM64.50 41.33L65.14 45.21Q63.28 45.61 61.82 45.61Q59.42 45.61 58.11 44.85Q56.79 44.09 56.25 42.86Q55.71 41.63 55.71 37.67L55.71 22.75L52.49 22.75L52.49 19.34L55.71 19.34L55.71 12.92L60.08 10.28L60.08 19.34L64.50 19.34L64.50 22.75L60.08 22.75L60.08 37.92Q60.08 39.79 60.31 40.33Q60.55 40.87 61.07 41.19Q61.60 41.50 62.57 41.50Q63.31 41.50 64.50 41.33ZM86.55 36.91L91.09 37.48Q90.01 41.46 87.11 43.65Q84.20 45.85 79.69 45.85Q74.00 45.85 70.67 42.35Q67.33 38.84 67.33 32.52Q67.33 25.98 70.70 22.36Q74.07 18.75 79.44 18.75Q84.64 18.75 87.94 22.29Q91.24 25.83 91.24 32.25Q91.24 32.64 91.21 33.42L71.88 33.42Q72.12 37.70 74.29 39.97Q76.46 42.24 79.71 42.24Q82.13 42.24 83.84 40.97Q85.55 39.70 86.55 36.91M72.12 29.81L86.60 29.81Q86.30 26.54 84.94 24.90Q82.84 22.36 79.49 22.36Q76.46 22.36 74.40 24.39Q72.34 26.42 72.12 29.81ZM104.37 45.26L118.12 9.47L123.22 9.47L137.87 45.26L132.47 45.26L128.30 34.42L113.33 34.42L109.40 45.26L104.37 45.26M114.70 30.57L126.83 30.57L123.10 20.65Q121.39 16.14 120.56 13.23Q119.87 16.67 118.63 20.07L114.70 30.57ZM141.04 45.26L141.04 19.34L145.00 19.34L145.00 23.27Q146.51 20.51 147.79 19.63Q149.07 18.75 150.61 18.75Q152.83 18.75 155.13 20.17L153.61 24.24Q152.00 23.29 150.39 23.29Q148.95 23.29 147.80 24.16Q146.66 25.02 146.17 26.56Q145.43 28.91 145.43 31.69L145.43 45.26L141.04 45.26ZM167.33 41.33L167.97 45.21Q166.11 45.61 164.65 45.61Q162.26 45.61 160.94 44.85Q159.62 44.09 159.08 42.86Q158.54 41.63 158.54 37.67L158.54 22.75L155.32 22.75L155.32 19.34L158.54 19.34L158.54 12.92L162.92 10.28L162.92 19.34L167.33 19.34L167.33 22.75L162.92 22.75L162.92 37.92Q162.92 39.79 163.15 40.33Q163.38 40.87 163.90 41.19Q164.43 41.50 165.41 41.50Q166.14 41.50 167.33 41.33Z"/></g>
+                </svg>
+            </div>
+            <div class="hero">
+                <p>Our Story</p>
+                <h1>Drawing is a Language — We Teach It</h1>
+                <p style="color: white;">Founded by working artists, ArtElite has grown into the world's most trusted online drawing academy since 2016.</p>
+            </div>
+            <div class="op">
+                <h1>Our Mission</h1>
+                <p>To make elite-level drawing instruction accessible to every aspiring artist on the planet — regardless of background, age, or experience level.</p>
+            </div>
+            <div class="op">
+                <h1>9 Years of Excellence</h1>
+                <p>Since 2016, we've helped over 12,000 students to find their artistic voice through structured, outcome-focused curricula.</p>
+            </div>
+            <div class="op">
+                <h1>Results-Driven Teaching</h1>
+                <p>Every course is built around measurable outcomes. You'll know exactly what skills you gain and how to apply them from day one.</p>
+            </div>
+            <br><p>What We Stand For</p><hr><br>
+            <ul>
+                <li><h3 style="color: #0F172A;">• Craftsmanship over shortcuts. We teach fundamentals that last a lifetime, not tricks that fade.</h3></li><br>
+                <li><h3 style="color: #0F172A;">• Honest critique. Real improvement comes from honest, respectful feedback — not empty praise.</h3></li><br>
+                <li><h3 style="color: #0F172A;">• Community first. Our students support one another in a judgment-free, globally diverse studio space.</h3></li><br> 
+                <li><h3 style="color: #0F172A;">• Never stop learning. Our instructors are active working artists — always growing, always teaching.</h3></li>
+            </ul>
+        </div>
+
+        <div id="contact" class="page">
+            <div class="heroi">
+                <svg class="h" xmlns="http://www.w3.org/2000/svg" viewBox="0 9.470000267028809 167.97000122070312 36.37999725341797" width="167.97" height="36.38">
+                    <g fill="#ffffff"><path d="M0 45.26L0 9.47L25.88 9.47L25.88 13.70L4.74 13.70L4.74 24.66L24.54 24.66L24.54 28.86L4.74 28.86L4.74 41.04L26.71 41.04L26.71 45.26L0 45.26ZM32.59 45.26L32.59 9.47L36.99 9.47L36.99 45.26L32.59 45.26ZM43.82 14.53L43.82 9.47L48.22 9.47L48.22 14.53L43.82 14.53M43.82 45.26L43.82 19.34L48.22 19.34L48.22 45.26L43.82 45.26ZM64.50 41.33L65.14 45.21Q63.28 45.61 61.82 45.61Q59.42 45.61 58.11 44.85Q56.79 44.09 56.25 42.86Q55.71 41.63 55.71 37.67L55.71 22.75L52.49 22.75L52.49 19.34L55.71 19.34L55.71 12.92L60.08 10.28L60.08 19.34L64.50 19.34L64.50 22.75L60.08 22.75L60.08 37.92Q60.08 39.79 60.31 40.33Q60.55 40.87 61.07 41.19Q61.60 41.50 62.57 41.50Q63.31 41.50 64.50 41.33ZM86.55 36.91L91.09 37.48Q90.01 41.46 87.11 43.65Q84.20 45.85 79.69 45.85Q74.00 45.85 70.67 42.35Q67.33 38.84 67.33 32.52Q67.33 25.98 70.70 22.36Q74.07 18.75 79.44 18.75Q84.64 18.75 87.94 22.29Q91.24 25.83 91.24 32.25Q91.24 32.64 91.21 33.42L71.88 33.42Q72.12 37.70 74.29 39.97Q76.46 42.24 79.71 42.24Q82.13 42.24 83.84 40.97Q85.55 39.70 86.55 36.91M72.12 29.81L86.60 29.81Q86.30 26.54 84.94 24.90Q82.84 22.36 79.49 22.36Q76.46 22.36 74.40 24.39Q72.34 26.42 72.12 29.81ZM104.37 45.26L118.12 9.47L123.22 9.47L137.87 45.26L132.47 45.26L128.30 34.42L113.33 34.42L109.40 45.26L104.37 45.26M114.70 30.57L126.83 30.57L123.10 20.65Q121.39 16.14 120.56 13.23Q119.87 16.67 118.63 20.07L114.70 30.57ZM141.04 45.26L141.04 19.34L145.00 19.34L145.00 23.27Q146.51 20.51 147.79 19.63Q149.07 18.75 150.61 18.75Q152.83 18.75 155.13 20.17L153.61 24.24Q152.00 23.29 150.39 23.29Q148.95 23.29 147.80 24.16Q146.66 25.02 146.17 26.56Q145.43 28.91 145.43 31.69L145.43 45.26L141.04 45.26ZM167.33 41.33L167.97 45.21Q166.11 45.61 164.65 45.61Q162.26 45.61 160.94 44.85Q159.62 44.09 159.08 42.86Q158.54 41.63 158.54 37.67L158.54 22.75L155.32 22.75L155.32 19.34L158.54 19.34L158.54 12.92L162.92 10.28L162.92 19.34L167.33 19.34L167.33 22.75L162.92 22.75L162.92 37.92Q162.92 39.79 163.15 40.33Q163.38 40.87 163.90 41.19Q164.43 41.50 165.41 41.50Q166.14 41.50 167.33 41.33Z"/></g>
+                </svg>
+            </div>
+            <div class="heroi"><h1>Contact Us</h1></div>
+            <div class="op"><h1>📞 Call Us</h1><p>+91 7384506600</p></div>
+            <div class="op"><h1>💬 WhatsApp</h1><p>Chat with us anytime for orders and queries.</p></div>
+            <div class="op"><h1>📍 Location</h1><p>Contact US for Your Art Tuition Location</p></div>
+            <div class="visme_d" data-title="Real Estate Client Registration Form Template" data-url="y710drmx-untitled-project" data-domain="forms" data-full-page="false" data-min-height="500px" data-form-id="180620"></div><script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script>
+        </div>
+        <a href="https://wa.me/+917384506600" class="whatsapp">💬</a>
+    <a href="tel:+917384506600" class="call">📞</a>
+
+        <nav class="bottom-nav">
+            <label for="tab-home"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>Home</label>
+            <label for="tab-about"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>About</label>
+            <label for="tab-contact"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</label>
+        </nav>
+    </div>
+        <script>
+        const submitBtn = document.getElementById('submit-btn');
+        const stanInput = document.getElementById('stan-input');
+        const stanCharacter = document.getElementById('stan-character');
+        const statusText = document.getElementById('status-text');
+        const captchaBox = document.getElementById('captcha-box');
+        const mainSiteWrapper = document.getElementById('main-site-wrapper');
+
+        let classifier;
+
+        // Async initializer optimized for GitHub Pages hosted structures
+        async function initAI() {
+            try {
+                // Ensure the dynamic framework mirror binds securely to the global scope
+                if (typeof window.pipeline !== 'function') {
+                    throw new Error("Transformers library pipeline mapping unresolved.");
+                }
+                
+                classifier = await window.pipeline('sentiment-analysis', 'Xenova/distilbert-base-uncased-finetuned-sst-2-english');
+                
+                statusText.innerText = "Prove you're human. Make Stan smile.";
+                stanInput.removeAttribute('disabled');
+                submitBtn.removeAttribute('disabled');
+                stanInput.placeholder = "Your Glasses look amazing!";
+            } catch (error) {
+                console.error("Initialization sequence exception handled:", error);
+                statusText.innerText = "Error booting AI. Try reloading.";
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initAI);
+
+        submitBtn.addEventListener('click', async () => {
+            const text = stanInput.value.trim();
+            if (!text) return;
+
+            submitBtn.innerText = "...";
+            submitBtn.setAttribute('disabled', true);
+            stanCharacter.classList.remove('happy', 'sad');
+
+            try {
+                const result = await classifier(text);
+                const sentiment = result[0].label; 
+
+                if (sentiment === 'POSITIVE') {
+                    stanCharacter.classList.add('happy');
+                    statusText.innerText = "Verification Passed!";
+                    stanInput.setAttribute('disabled', true);
+                    submitBtn.innerText = "Success";
+                    
+                    setTimeout(() => {
+                        captchaBox.classList.add('hidden');
+                        setTimeout(() => {
+                            captchaBox.style.display = 'none';
+                            document.body.style.display = 'block';
+                            document.body.style.height = 'auto';
+                            mainSiteWrapper.classList.add('reveal');
+                        }, 600);
+                    }, 1200);
+
+                } else if (sentiment === 'NEGATIVE') {
+                    submitBtn.innerText = "Tell Stan";
+                    submitBtn.removeAttribute('disabled');
+                    
+                    // Enforce structural element repaint loop to reboot animations properly
+                    stanCharacter.style.display = 'none';
+                    stanCharacter.offsetHeight; 
+                    stanCharacter.style.display = 'block';
+                    stanCharacter.classList.add('sad');
+                }
+            } catch (e) {
+                submitBtn.innerText = "Tell Stan";
+                submitBtn.removeAttribute('disabled');
+                console.error("Pipeline breakdown event tracked:", e);
+            }
+        });
+
+        stanInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !submitBtn.hasAttribute('disabled')) {
+                submitBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
